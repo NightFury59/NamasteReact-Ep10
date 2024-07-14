@@ -1,30 +1,30 @@
-For running our project we do npx parcel index.html , instead of doing this lets build a script so we can use npm commands instead of npx command.
+* For running our project we do npx parcel index.html , instead of doing this lets build a script so we can use npm commands instead of npx command.
 
-To create a npm script you need to create that in your package.json file.
+* To create a npm script you need to create that in your package.json file.
 
-In package.json go in the section scripts.
+* In package.json go in the section scripts.
 
-Lets create a script for starting our project in dev mode.
+* Lets create a script for starting our project in dev mode.
 
-When we do "start": "parcel index.html" it will run our project in development mode.
+* When we do "start": "parcel index.html" it will run our project in development mode.
 
-This script will be used to create a dev build.
+* This script will be used to create a dev build.
 
-In the scripts lets also create a script for building it for production. Lets name it as build 
+* In the scripts lets also create a script for building it for production. Lets name it as build 
 
-This will basically build the project, the production build of our project.
+* This will basically build the project, the production build of our project.
 
-Now when we have created these scripts we no longer have to write npx parcel index.html to run our code.
+* Now when we have created these scripts we no longer have to write npx parcel index.html to run our code.
 
-What we have done now by adding these scripts, it is an industry standard. Generally we create these scripts and it is a standard convention in the industry to use these scripts.
+* What we have done now by adding these scripts, it is an industry standard. Generally we create these scripts and it is a standard convention in the industry to use these scripts.
 
-If you are in a foreign code setup and dont know how to run the project, just go into the package.json and find the scripts and you will get the exact command to run the code.
+* If you are in a foreign code setup and dont know how to run the project, just go into the package.json and find the scripts and you will get the exact command to run the code.
 
-So now after we have inserted these scripts inside of our package, to run the project you will have to do npm start and then the name of the script.
+* So now after we have inserted these scripts inside of our package, to run the project you will have to do npm start and then the name of the script.
 
 ** npm also gives you a shortcut, instead of doing npm run start you can also just do npm start.
 
-This shortcut only runs for start, like npm start instead of npm run start. It wont work for build, you cant do npm build instead of npm run build.
+* This shortcut only runs for start, like npm start instead of npm run start. It wont work for build, you cant do npm build instead of npm run build.
 
 
 * What are React Elements? - Just like we have DOM elements, in React we have react elements which are kind of equivalent to DOM elements. Lets assume
@@ -150,32 +150,3 @@ which takes 3 arguments and its a little annoying. It's not very developer frein
 * JSX will escape malicious data. It sanitizes the code.
 
 ** To add a component inside of a component or an element we do <component name />, but we can also do it as <component name><component name />.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   
- 
-
-
-
-
-
-
-
-
-
-
-
-
