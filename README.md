@@ -1,128 +1,80 @@
-** Lets get Hooked!
 
-What is a React Hook ? - A react hook is a normal javascript function which is given to us by React. The only thing is that, that function comes with superpowers.
+* Lets take a loot at what is monolith and microservice architecture.
 
-* There are multiple such functions and those are known as React hooks.
+* Monolith architecture - Traditionally all the web apps were developed using Monolith Architecture.
 
-** React Hooks - Normal JavaScript Utility functions written by Facebook developers.
+* Microservice Architecture - In this we have different services for different jobs. All these services combined together forms an app.
 
-* To use them we will have to import those functions.
+* In microservices all the small services combined together forms a big app.
 
-* There are 2 very important React utility functions -
-1) useState()
-2) useEffect()
+* Single Responsibility Principle - Each and every service has its own job.
 
-* 99% of the times in react, you will be working with useState() and useEffect().
+* With microservice architecture all of the teams work on their on individual responsibilities.
 
+** The services in microservice architecture needs to interact with each other to make the application work.
 
-** useState() - Used to generate superpowerful state variables in React.
- * To use useState() you have to import it using Named import .. import { useState } from "react";
+* The namaste react swiggy project we are making comes in UI microservice.
+
+* All the services work on their own specific port (for ex - our UI service we are making is running on port 1234).
+
+* On different ports we can deploy different services.
+
+* At the end of the day all the ports can be mapped to different domain names.
+
+** Lets see how our react application talk to different microservices.
+
+* There are two approaches to how web app/ ui applications fetch the data from backend.
+
+ - 1) As soon as our page loads we can make an api call to fetch the data, when we get the data then we can render it on to the UI.
+ - 2) As soon as the page loads we will render the UI, then we will make an API call. And as soon as we get the result back from API. We will re render our application with new data.
  
-* useState() maintains the state of your component.
+* In React we will always be using the second approach.
 
-* Whenever you call a useState() it will give you a state variable. And we recieve that state variable inside an array like - const [listOfRestaurants] = useState();
- 
-* This is how you create a normal variable and state variable -
+* The 2nd one is a better approach and it will give us a better UX. (User experience)
 
-1) Normal variable - let listOfRestaurants;
+* React has a very fast render cycle, React renders your UI very quickly with high speed. So we dont have to bother much about how many times we are rendering. 2 renders are ok.
 
-2) State Variable - const [listOfRestaurants] = useState();
+* When we develop our react application in real world, we will have to make a lot of api calls.
 
-* In the useState([]), the array inside of the useState will act as the body of the variable.
+** To write the code for the 2nd approach, we will make use of *** useEffect() hook.
 
-* To modify these state variables, you will need to modify them by using a function.
+* React hooks are nothing but normal Javascript functions which react gives to us, it has its own specific use cases where we use these functions.
 
-** The function which will be used to modify will go as the second parameter in the array.
+** useEffect will take 2 arguments. The first argument is Arrow function, it will be a callback function. The 2nd argument will be a dependancy array.
 
-** You should write the function which you will use to modify as - setVariableName. For example - setListOfRestaurants
+* The callback function of useEffect will be called after your component renders.
 
-** This second function which we have used is for the purpose of updating the list(variable content).
+** Purpose of useEffect - If you have to do something after rendering the component, you have to use the hook called useEffect.
 
+* For fetching the data we will use a method/function named fetch.
 
-*************** Whenever a state variable is updated, React re-renders the component. **************************
- 
+* fetch() is a superpower which is given to us by browsers.
 
-* Everything that react can do you can do that using normal html, css, JS.
+* fetch() will fetch the data from api.
 
-* Then why React? - It makes you write less code and make you do more on th webpage, It makes the developers life easy.
+* fetch() will return a promise.
 
-** We will learn about React hooks.
+* To resolve the promise use Async await.
 
-* The best practice is to make separate files for separate components.
+* Once we fetch the data we need to convert it into a readable string by using JSON.
 
-* All the main code in a react project is generally kept in a src folder.
+* Our browsers block us to call api from one origin to another origin.
 
-* We should create separate files for separate components. So we will create separate files for the components in our project(Header, Body, AppLayout, RestaurantCard).
+** Here in our project we have made live api call to swiggys api.
 
-* The best common practice is to create a components folder for all the components. It will be created inside the src folder.
+* Shimmer UI - It is kind of like we load fake page until we get the actual data from the API. All the new web apps are following Shimmer UI.
 
-* Inside the components folder it will have files for different components.
+* We will also make a Shimmer component for our project.
 
-* Whenever you create a file for a component, name it exactly the same as the component name. For example - Header.js
+* Conditional Rendering - Rendering on basis of some conditions.
 
-* You can write it as Header.js or Header.jsx anything as you wish. It doesnt matter, we will use .js for projects.
+** Why we use stated? - If you want to make your components dynamic or you want that something to change in your component. We use local state variable, here's where	
+						useState's state variable comes into picture.
+						
+* React is so good in DOM manipulation because it uses Reconciliation Algorithm and by it, it finds the diff and it exactly knows what to change!
 
-* We can export a React Component using export default ComponentName.
+* **** Whenever you change a local state variable, React re renders the component.
 
-* We can import a React Component as import ComponentName from "path".
+** Whenever state variable update, React triggers a reconciliation cycle.
 
-* Whenever you have any hard coded data, never keep it in your components file.
-
-* Never keep any hard coded string into your components files.
-
-* Put the hard coded data into a folder named utils/commons and inside that create a file named constants.js.
-
-** There are two types of export and import -
-
-* One is the default export and the other is named export or named import.
-
-* The second way(named) is used generally when in a single file you have to export multiple things.
-
-* In a single file you can only write 1 default export. You cant do two default exports in a single file.
-
-* It is easy to do a named export, just add export before the thing that you want to export.
-
-* When we have used a named export theres a slight difference on how we can import those named export.
-
-* Whenever you want to import a named export you need to add curly braces for whatever you want to import. Like import {..} from "path".
-
-* Lets create a button that will show us top rated restaurant when we click on it.
-
-* React is fast and efficient in DOM manipulation.
-
-* React tries to ensure that the UI and DATA layer work with each other.
-
-** Why React is fast? Because it can do faster DOM manipulation, it can do efficient DOM manipulation.
-
-
-*** State Variable - It is like the state of the component.
- 
-* State Variable - Super Powerful Variable.
-
-* What is a React Hook ? - A react hook is a normal javascript function which is given to us by React. The only thing is that, that function comes with superpowers.
-
-
-
-*** How React Works Behind the Scenes *** -
-
-* Reacts works on an algorithm called as "Reconciliation Algorithm". Reconciliation Algorithm is known as React Fiber.
-
-* In React 16 a new algorithm to update the DOM came out. That algorithm is known as Reconciliation Algorithm (React Fiber).
-
-* React Fiber is a new way of finding the div and updating the DOM.
-
-* Suppose you have 7 res cards and you click the button to filter out res cards having rating above 4.4, So it basically finds out the difference between virtual DOM.
-
-* The diff algorithm finds out the difference between the old DOM and the new DOM, after finding the difference it will update the actual DOM and thats how react becomes faster.
-
-*** Whenever there is a change between any state variables, react will find out the difference between virtual DOM and it will re render the component (update the DOM).
-
-
-
-** This is why React is fast and best -
-
-**** So if you are asked the question why React is fast, the answer is - Because React is doing efficient DOM manipulation,
-React finds out the difference between virtual DOMs and updates the UI, this is what React is best at.
-
-* Why React is fast? By Akshay Saini - Because it has a virtual DOM, it has a diff algorithm that is very efficient, it can do efficient DOM manipulation, it can find out the diff and update the UI.
-									   
+* 
