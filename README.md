@@ -1,80 +1,70 @@
+** Finding the Path
 
-* Lets take a loot at what is monolith and microservice architecture.
 
-* Monolith architecture - Traditionally all the web apps were developed using Monolith Architecture.
+* We will learn about routing in our React application, we will see how we can create multiple routes, how we can create nested routes, how we can create different pages in our app.
 
-* Microservice Architecture - In this we have different services for different jobs. All these services combined together forms an app.
+* We will be using a routing library.
 
-* In microservices all the small services combined together forms a big app.
+*** useEffect -
 
-* Single Responsibility Principle - Each and every service has its own job.
+** A very important interview question - When is useEffect() called? Ans - The useEffect() is basically called after every render of that component.
 
-* With microservice architecture all of the teams work on their on individual responsibilities.
+** If we dont use any dependancy array inside of useEffect() then useEffect will be called on every render.
 
-** The services in microservice architecture needs to interact with each other to make the application work.
+** If useEffect() has an empty dependancy array => useEffect(() => {}, []). Then useEffect is called only during the initial render and just once.
 
-* The namaste react swiggy project we are making comes in UI microservice.
+** If there is something present in the dependancy array in useEffect, then it will be only called when the dependancy gets updated.
 
-* All the services work on their own specific port (for ex - our UI service we are making is running on port 1234).
 
-* On different ports we can deploy different services.
+*** useState - useStates are used to create local state variable inside of your function component.
 
-* At the end of the day all the ports can be mapped to different domain names.
+* Never use, useState() outside of your component, it doesnt make any sense!
 
-** Lets see how our react application talk to different microservices.
+* Call the useState hook at the top level of the component, its a good coding practice and doesnt create inconsistency in your code.
 
-* There are two approaches to how web app/ ui applications fetch the data from backend.
+* Never use your useState inside of an if else block, for loop.
 
- - 1) As soon as our page loads we can make an api call to fetch the data, when we get the data then we can render it on to the UI.
- - 2) As soon as the page loads we will render the UI, then we will make an API call. And as soon as we get the result back from API. We will re render our application with new data.
- 
-* In React we will always be using the second approach.
 
-* The 2nd one is a better approach and it will give us a better UX. (User experience)
+** Lets see how we can create different routes inside our React application -
 
-* React has a very fast render cycle, React renders your UI very quickly with high speed. So we dont have to bother much about how many times we are rendering. 2 renders are ok.
+* We will be using a npm javascript library, that library is known as React Router dom. Many big projects are built using this.
 
-* When we develop our react application in real world, we will have to make a lot of api calls.
+* Whenever we have to create routes, we have to create routing configurations. For that we will import { createBrowserRouter } from react-router-dom;
 
-** To write the code for the 2nd approach, we will make use of *** useEffect() hook.
+* When we create a configuration we need to provide that configuration, we need to provide it to render it, for that we will have one more important component which we can import from
+  react-router-dom. This important component is RouterProvider.
+  
+** react-router-dom gives us acces to an important hook - useRouteError
 
-* React hooks are nothing but normal Javascript functions which react gives to us, it has its own specific use cases where we use these functions.
+* This hook gives us more information about the error.
 
-** useEffect will take 2 arguments. The first argument is Arrow function, it will be a callback function. The 2nd argument will be a dependancy array.
+** Children routes - Children is a list of paths, paths of childres.
 
-* The callback function of useEffect will be called after your component renders.
+* When you are using react and you want to Route so some other page, never use an anchor tag. Because the whole page will get refreshed due to its operation.
 
-** Purpose of useEffect - If you have to do something after rendering the component, you have to use the hook called useEffect.
+* To route to some other page without reloading the whole page, React-router-dom gives us a superpower - Link Component. import { Link } from react-router-dom.
 
-* For fetching the data we will use a method/function named fetch.
+* How to use the Link component? - The Link component works exactly the same as anchor tag.
 
-* fetch() is a superpower which is given to us by browsers.
+* The only difference between Link and Anchor tag is, in Anchor tag we use href="", in Link we will use to="".
 
-* fetch() will fetch the data from api.
+*** React is known as Single Page Applications - Its a whole single component, and all the routing is just changing taking place between components. The page doesnt get refreshed. Client Side Routing.
 
-* fetch() will return a promise.
+** There are 2 types of routing you can have in web apps - 1) Client side routing , 2) Server Side Routing.
 
-* To resolve the promise use Async await.
+* 1) Server side routing - It means you make a network call and the respective page appears from the server.
 
-* Once we fetch the data we need to convert it into a readable string by using JSON.
+* 2) Client side routing - No network calls are made for pages to get appeared. Because all the components are already present in the app.
 
-* Our browsers block us to call api from one origin to another origin.
+** React is based on Client Side Routing **
 
-** Here in our project we have made live api call to swiggys api.
+* All the apps we make mostly have routing.
 
-* Shimmer UI - It is kind of like we load fake page until we get the actual data from the API. All the new web apps are following Shimmer UI.
 
-* We will also make a Shimmer component for our project.
+** GraphQL - It helps us loading only that data which is required for us.
 
-* Conditional Rendering - Rendering on basis of some conditions.
+** Dont panic when you get errors.
 
-** Why we use stated? - If you want to make your components dynamic or you want that something to change in your component. We use local state variable, here's where	
-						useState's state variable comes into picture.
-						
-* React is so good in DOM manipulation because it uses Reconciliation Algorithm and by it, it finds the diff and it exactly knows what to change!
+* Whenever you will use the map function, always use a key along with it. Otherwise React will throw a warning.
 
-* **** Whenever you change a local state variable, React re renders the component.
-
-** Whenever state variable update, React triggers a reconciliation cycle.
-
-* 
+** Link uses Anchor tag behind the scenes. Link is a wrapper over anchor tag.
