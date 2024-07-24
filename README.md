@@ -1,70 +1,89 @@
-** Finding the Path
+** Lets get Classy!
+
+* Class based components - Class based components is an older way of creating components inside react.
+
+* Class based component are very important to know as it is asked a lot during interviews. Because lot of companies have these components in their legacy codes.
+
+* Class based components will exactly tell you have react life cycle works, how react components get rendered onto the page, etc.
+
+** Class based component - Its a normal javascript class which has a render method which will return some peice of JSX.
+
+* For creating a class based component, you will have to do it like this. class "your component name" extends React.Component {}. 
+* Doing this our component becomes a class based component.
+
+** The class based component will have a render method inside of it, and this render method will return a peice of JSX which will be displayed onto the UI.
+
+* class "componentName" extends React.Component {
+	
+	render() {
+	
+		// peice of JSX which will be displayed onto the UI.
+		
+		return (
+			// content to be returned.
+		)
+	}
+}
 
 
-* We will learn about routing in our React application, we will see how we can create multiple routes, how we can create nested routes, how we can create different pages in our app.
+** To make use of class based components we use React.Component, which is basically a class given to us by react. Hence, we have to import React from 'react' at the top.
 
-* We will be using a routing library.
+** To have props inside of a class based component, we will have a constructor(props) inside of our class above render method. This constructor will recieve the props.
 
-*** useEffect -
+* Inside of the contructor props we have to do super(props) and below it console.log(props).
 
-** A very important interview question - When is useEffect() called? Ans - The useEffect() is basically called after every render of that component.
+* Then inside of the JSX part of our class we will have to do this.props, You will always have to use the this keyword for using props inside of class based components,
+so that this props can be accessed anywhere inside of the class.
 
-** If we dont use any dependancy array inside of useEffect() then useEffect will be called on every render.
+* In class based component we dont have to import useState hook, as earlier there were no hooks.
 
-** If useEffect() has an empty dependancy array => useEffect(() => {}, []). Then useEffect is called only during the initial render and just once.
+* We create state variables inside of the class based components inside of the constructor(props).
 
-** If there is something present in the dependancy array in useEffect, then it will be only called when the dependancy gets updated.
+* We do this.state = {} inside of our constructor and , this state is basically a big whole object which contains state variables.
 
+* Then to use the state inside of our component in the JSX part we will have to do this.state.count
 
-*** useState - useStates are used to create local state variable inside of your function component.
+* In functional component we can create as many state variable as we want to.
 
-* Never use, useState() outside of your component, it doesnt make any sense!
+** In class based component the state is basically a big object which will contain all the state variables.
 
-* Call the useState hook at the top level of the component, its a good coding practice and doesnt create inconsistency in your code.
+** NEVER UPDATE STATE VARIABLES DIRECTLY.
 
-* Never use your useState inside of an if else block, for loop.
+* To update the state variable in class based components, we will make use of this.setState({}). The this.setState will contain the updated value of your state variable.
 
+** How React class based components are mounted onto the webpage -
 
-** Lets see how we can create different routes inside our React application -
+* The first thing when a class loads a constructor is called, once the constructor is called then the render is called 
 
-* We will be using a npm javascript library, that library is known as React Router dom. Many big projects are built using this.
+** If we have a parent class based component and inside it we have a child class based constructor. The console.log will get executed in the below order -
+1) Parent constructor,
+2) Parent render,
+3) Child constructor,
+4) Child render.
+	
+* As class based component has constructor and render method, it also has one more method named as componentDidMount().
 
-* Whenever we have to create routes, we have to create routing configurations. For that we will import { createBrowserRouter } from react-router-dom;
+* When the class based component loads, first of all the contructor is called then the render method is called and after that the componentDidMount is called.
 
-* When we create a configuration we need to provide that configuration, we need to provide it to render it, for that we will have one more important component which we can import from
-  react-router-dom. This important component is RouterProvider.
-  
-** react-router-dom gives us acces to an important hook - useRouteError
+* The componentDidMount() will be called when the component is mounted on to the webpage.
 
-* This hook gives us more information about the error.
+* Now if we have parent class based component and child class based component and each of them has constructor, componentDidMount and render method. And we put a console.log() in each.
 
-** Children routes - Children is a list of paths, paths of childres.
+** IMP Interview question -
+* What will be the order of the console log? - Ans -
 
-* When you are using react and you want to Route so some other page, never use an anchor tag. Because the whole page will get refreshed due to its operation.
+1) Parent constructor
+2) Parent render
+3) Child constructor
+4) Child render
+5) Child componentDidMount
+6) Parent componentDidMount
 
-* To route to some other page without reloading the whole page, React-router-dom gives us a superpower - Link Component. import { Link } from react-router-dom.
+* componentDidMount - componentDidMount is used to make API calls.
 
-* How to use the Link component? - The Link component works exactly the same as anchor tag.
+* Why API call is made inside componentDidMount? - As we know on our webpage react first loads the page then renders then makes an API call and then again re renders. SO,
+in class based components first it will execute the constructor part then the render part and then the componentDidMount part. So it will do the cycle of Loads -> Renders -> API call -> Re renders.
 
-* The only difference between Link and Anchor tag is, in Anchor tag we use href="", in Link we will use to="".
+** How to make an API call in class based component? -
 
-*** React is known as Single Page Applications - Its a whole single component, and all the routing is just changing taking place between components. The page doesnt get refreshed. Client Side Routing.
-
-** There are 2 types of routing you can have in web apps - 1) Client side routing , 2) Server Side Routing.
-
-* 1) Server side routing - It means you make a network call and the respective page appears from the server.
-
-* 2) Client side routing - No network calls are made for pages to get appeared. Because all the components are already present in the app.
-
-** React is based on Client Side Routing **
-
-* All the apps we make mostly have routing.
-
-
-** GraphQL - It helps us loading only that data which is required for us.
-
-** Dont panic when you get errors.
-
-* Whenever you will use the map function, always use a key along with it. Otherwise React will throw a warning.
-
-** Link uses Anchor tag behind the scenes. Link is a wrapper over anchor tag.
+* In class based component you can do async before the componentDidMount function.
