@@ -1,21 +1,27 @@
-** Optimizing our App -
-
-* Single Responsibility Principle - Each component should have its single responsibility.
-
-* Keep your component as light as possible.
-
-** Custom Hooks - A custom hook in React is a reusable function that encapsulates and manages stateful logic, allowing you to share and reuse this logic across multiple components.
-
-* If you want to create custom hook files, you should do that in your utils folder.
-
-* Chunking/ Code Splitting/ Dynamic bundling/ Lazy Loading/ On demand loading - To break down our app into smaller logical chunks.
-
-*  We have added grocery option in our header, we will implement lazy loading on it. 
-
-** When our app page will load initially, it will not load the code for grocery, only when will go to our grocery page then only the code for grocery will be loaded.
-
-* To do this lazy loading/ on demand loading, we will not import our component as we normally do, we will import it like const Grocery = lazy(() => (//path to Grocery component));
-
-* And lazy is a named import given to us by react, we will load lazy like import { lazy } from 'react';
-
-** Suspense component - Suspense in React is a component that allows you to handle the loading state of asynchronous operations, such as fetching data or loading components, by providing a fallback UI until the operation completes. It helps in improving user experience by displaying a placeholder (like a loading spinner) while the data or component is being fetched or loaded.
+ 10 -
+ 
+ * We will make the visuals of our app attractive in this episode.
+ 
+ * We'll do it by a CSS framework.
+ 
+ * Sass and Scss is like a superpower by which we can make it easier to write our CSS. But it is not recommended to write CSS like this.
+ 
+ ** styled-components - It is also another way to write CSS in our app.
+ 
+ * By using CSS libraries and frameworks we get pre-built components. Which we import in our app.
+ 
+ * Material UI, Bootstrap, Chakra UI, ant design are all CSS libraries and frameworks.
+ 
+ * In our project we will style our components using Tailwind CSS.
+ 
+ * Tailwind CSS - Rapidly build modern websites without ever leaving your HTML.
+ 
+ * When we install tailwind css in our project we will get a tailwind.config.js file in our project.
+ 
+ * Our parcel needs postcssrc to read tailwind.
+ 
+ * postcssrc is kind of a way that our project understands what is written inside our tailwind.
+ 
+ ** !!! We will now delete everything which have written till now in our index.css file, and just write the three lines which was provided in tailwind.css configuration steps - @tailwind base;
+@tailwind components;
+@tailwind utilities;
